@@ -19,18 +19,6 @@
         app:title="Kişiler"
         app:titleTextColor="#000000" />
 
-    <Button
-        android:id="@+id/buttonDetay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detay"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarAnasayfa"
-        app:layout_constraintVertical_bias="0.5" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -41,4 +29,18 @@
         android:src="@drawable/ekle_resim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        android:queryHint="Ara"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAnasayfa" />
 </androidx.constraintlayout.widget.ConstraintLayout>
