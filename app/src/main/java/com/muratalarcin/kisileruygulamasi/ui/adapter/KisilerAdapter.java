@@ -1,15 +1,19 @@
 package com.muratalarcin.kisileruygulamasi.ui.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.muratalarcin.kisileruygulamasi.data.entity.Kisiler;
 import com.muratalarcin.kisileruygulamasi.databinding.CardTasarimBinding;
+import com.muratalarcin.kisileruygulamasi.ui.fragment.AnasayfaFragmentDirections;
 
 import java.net.ContentHandler;
 import java.util.List;
@@ -45,10 +49,26 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
 
         t.textViewKisiAd.setText(kisi.getKisi_ad());
         t.textViewKisiTel.setText(kisi.getKisi_tel());
+
+        t.cardViewSatir.setOnClickListener(view -> {
+            AnasayfaFragmentDirections.KisiDetayGecis gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi);
+            Navigation.findNavController(view).navigate(gecis);
+        });
+
+        t.imageViewSil.setOnClickListener(view -> {
+           Snackbar.make(view,"Silinsin mi?", Snackbar.LENGTH_SHORT)
+                   .setAction("EVET", view1 -> {
+                       sil(kisi.getKisi_id());
+                   })
+                   .show();
+        });
     }
 
     @Override
     public int getItemCount() {
         return kisilerListesi.size();
+    }
+    public void sil(int kisi_id) {
+        Log.e("Kişi Sil", String.valueOf(kisi_id));
     }
 }
