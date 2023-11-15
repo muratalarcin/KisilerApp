@@ -3,6 +3,7 @@ package com.muratalarcin.kisileruygulamasi.ui.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,10 @@ public class KisiDetayFragment extends Fragment {
             String kisi_ad = binding.editTextKisiAd.getText().toString();
             String kisi_tel = binding.editTextKisiTel.getText().toString();
             guncelle(gelenKisi.getKisi_id(), kisi_ad, kisi_tel);
+        });
+
+        binding.floatingActionButton.setOnClickListener(view -> {
+            Navigation.findNavController(view).navigate(R.id.bottom_gecis);
         });
 
         return binding.getRoot();

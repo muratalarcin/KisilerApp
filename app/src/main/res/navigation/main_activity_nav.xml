@@ -25,10 +25,18 @@
         <argument
             android:name="kisi"
             app:argType="com.muratalarcin.kisileruygulamasi.data.entity.Kisiler" />
+        <action
+            android:id="@+id/bottom_gecis"
+            app:destination="@id/bottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/kisiKayitFragment"
         android:name="com.muratalarcin.kisileruygulamasi.ui.fragment.KisiKayitFragment"
         android:label="fragment_kisi_kayit"
         tools:layout="@layout/fragment_kisi_kayit" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.muratalarcin.kisileruygulamasi.ui.fragment.BottomSheetFragment"
+        android:label="fragment_bottom_sheet"
+        tools:layout="@layout/fragment_bottom_sheet" />
 </navigation>
