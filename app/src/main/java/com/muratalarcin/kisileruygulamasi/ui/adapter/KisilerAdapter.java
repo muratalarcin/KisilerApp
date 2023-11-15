@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.muratalarcin.kisileruygulamasi.data.entity.Kisiler;
 import com.muratalarcin.kisileruygulamasi.databinding.CardTasarimBinding;
 import com.muratalarcin.kisileruygulamasi.ui.fragment.AnasayfaFragmentDirections;
+import com.muratalarcin.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel;
 
 import java.net.ContentHandler;
 import java.util.List;
@@ -21,9 +22,12 @@ import java.util.List;
 public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasarimTutucu>{
     private List<Kisiler> kisilerListesi;
     private Context mContext;
-    public KisilerAdapter(List<Kisiler> kisilerListesi, Context mContext) {
+    private AnasayfaViewModel viewModel;
+
+    public KisilerAdapter(List<Kisiler> kisilerListesi, Context mContext, AnasayfaViewModel viewModel) {
         this.kisilerListesi = kisilerListesi;
         this.mContext = mContext;
+        this.viewModel = viewModel;
     }
 
     public class CardTasarimTutucu extends RecyclerView.ViewHolder {
@@ -58,7 +62,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         t.imageViewSil.setOnClickListener(view -> {
            Snackbar.make(view,"Silinsin mi?", Snackbar.LENGTH_SHORT)
                    .setAction("EVET", view1 -> {
-                       sil(kisi.getKisi_id());
+                       viewModel.sil(kisi.getKisi_id());
                    })
                    .show();
         });
@@ -67,8 +71,5 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
     @Override
     public int getItemCount() {
         return kisilerListesi.size();
-    }
-    public void sil(int kisi_id) {
-        Log.e("Kişi Sil", String.valueOf(kisi_id));
     }
 }

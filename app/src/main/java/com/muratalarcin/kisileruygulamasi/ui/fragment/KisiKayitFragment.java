@@ -2,7 +2,9 @@ package com.muratalarcin.kisileruygulamasi.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,9 +13,11 @@ import android.view.ViewGroup;
 
 import com.muratalarcin.kisileruygulamasi.R;
 import com.muratalarcin.kisileruygulamasi.databinding.FragmentKisiKayitBinding;
+import com.muratalarcin.kisileruygulamasi.ui.viewmodel.KisiKayitViewModel;
 
 public class KisiKayitFragment extends Fragment {
     private FragmentKisiKayitBinding binding;
+    private KisiKayitViewModel viewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,14 +27,15 @@ public class KisiKayitFragment extends Fragment {
             String kisi_ad = binding.editTextKisiAd.getText().toString();
             String kisi_tel = binding.editTextKisiTel.getText().toString();
 
-            kaydet(kisi_ad, kisi_tel);
+            viewModel.kaydet(kisi_ad, kisi_tel);
         });
 
         return binding.getRoot();
     }
 
-    public void kaydet(String kisi_ad, String kisi_tel) {
-        Log.e("Kişi Kaydet", kisi_ad + " - " + kisi_tel);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(KisiKayitViewModel.class);
     }
-
 }
